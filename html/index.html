@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<style>
+
+		h1 {
+
+			color: blue;
+
+  			font-family: verdana;
+
+  			font-size: 300%;
+
+		}
+
+		p  {
+
+ 			color: black;
+
+ 			font-family: sans-serif;
+
+ 			font-size: 160%;
+
+            border: 1px;
+
+  			padding: 5px;
+
+            background-color: gray;
+
+            border-radius: 10px;
+
+			}
+
+        button  {
+
+        	color: white;
+
+            font-size: 100%;
+
+            border: 3px solid navy;
+
+  			padding: 3px;
+
+            background: black;
+
+            border-radius: 10px;
+
+        }
+
+        
+
+		body  {  
+
+			background-color: black;
+
+		}
+
+
+
+	</style>
+
+
+
+</head>
+
+<!-- Comment -->
+
+
+
+
+
+	<h1>Random quadratic equation generator:</h1>
+
+
+
+    <p>
+
+		y = <tagname id="a" style="color:black;">a</tagname>x<sup>2</sup> 
+
+        	<tagname id="signb">+</tagname>
+
+        	<tagname id="b" style="color:black;">b</tagname>x
+
+            <tagname id="signc">+</tagname>
+
+            <tagname id="c" style="color:black;">c</tagname>
+
+    <p>
+
+			<button onclick="randomEQ()">New Equation</button>
+
+	<p>
+
+    		<button onclick="findxints()">x-intercepts: </button> 
+
+            ( <tagname id="x1">x</tagname> , 0)
+
+            ( <tagname id="x2">x</tagname> , 0)
+
+	<p>
+
+    		<button onclick="findyint()">y-intercept:</button> 
+
+            (0,<tagname id="y">y</tagname>)
+
+    <p>
+
+    		<button onclick="findslope()">slope:</button> 
+
+            <tagname id="m">a</tagname>
+
+    
+
+	<script>
+
+ 	function randomEQ(){
+
+    
+
+    	// this is to make sure that a is never 0
+
+    	var a = 0;
+
+        var b = document.getElementById("a").innerHTML;
+
+        while (a == 0){
+
+        	a = Math.floor(Math.random() * 51)-25;
+
+        }  
+
+        
+
+        // these generate the random numbers
+
+    	document.getElementById("a").innerHTML = a;
+
+    	document.getElementById("b").innerHTML = Math.floor(Math.random() * 25);
+
+        document.getElementById("c").innerHTML = Math.floor(Math.random() * 25);
+
+        
+
+        // these reset the answeres when the "New Equation" button is pressed
+
+        
+
+        document.getElementById("x1").innerHTML = "x";
+
+        document.getElementById("x2").innerHTML = "x";
+
+        
+
+        document.getElementById("y").innerHTML = "y";
+
+        document.getElementById("m").innerHTML = "a";
+
+        
+
+        
+
+        
+
+        // these determine the signs for all terms except a
+
+        var myArray = ['+', '-']; 
+
+        var signb = myArray[Math.floor(Math.random() * myArray.length)];
+
+        document.getElementById("signb").innerHTML =  signb
+
+        
+
+        var signc = myArray[Math.floor(Math.random() * myArray.length)];
+
+        document.getElementById("signc").innerHTML =  signc
+
+        
+
+	}
+
+    // this finds the x-int and displays it when the "x-intercept" button is pressed
+
+    function findxints(){
+
+    	var a = document.getElementById("a").innerHTML;
+
+		var b = document.getElementById("b").innerHTML;
+
+        var c = document.getElementById("c").innerHTML;
+
+        var signb = document.getElementById("signb").innerHTML;
+
+        var signc = document.getElementById("signc").innerHTML;
+
+        
+
+        if (signb == "+"){
+
+        var x1 = ( -b + Math.sqrt( ( b**2 ) - 4*a*c ) ) / ( 2 * a );
+
+        document.getElementById("x1").innerHTML = x1;
+
+        var x2 = ( -b - Math.sqrt( ( b**2 ) - 4*a*c ) ) / ( 2 * a );
+
+        document.getElementById("x2").innerHTML = x2;
+
+		}
+
+        
+
+        if (signb == "-"){
+
+        var x1 = -( -b + Math.sqrt( ( b**2 ) - 4*a*c ) ) / ( 2 * a );
+
+        document.getElementById("x1").innerHTML = x1;
+
+        var x2 = -( -b - Math.sqrt( ( b**2 ) - 4*a*c ) ) / ( 2 * a );
+
+        document.getElementById("x2").innerHTML = x2;
+
+		}
+
+        
+
+
+
+        
+
+    }
+
+    
+
+    
+
+    // this finds the y-int and displays it when the "y-intercept" button is pressed
+
+    function findyint(){
+
+    	
+
+        var signc = document.getElementById("signc").innerHTML;
+
+        if (signc == "-"){
+
+        	var c = document.getElementById("c").innerHTML;
+
+            document.getElementById("y").innerHTML = -c
+
+        }
+
+        if (signc == "+"){
+
+        	var c = document.getElementById("c").innerHTML;
+
+            document.getElementById("y").innerHTML = c
+
+        }
+
+        	
+
+    }
+
+    
+
+    
+
+    // this finds the slope when the "slope" button is pressed
+
+    function findslope(){
+
+    	var a = document.getElementById("a").innerHTML;
+
+    	document.getElementById("m").innerHTML = a
+
+    }
+
+	</script>
+
+</body>
+
+</html>
