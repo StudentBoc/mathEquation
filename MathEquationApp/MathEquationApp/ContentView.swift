@@ -25,8 +25,8 @@ struct ContentView: View {
         let aValue = arc4random_uniform(9) + 1
         let bValue = arc4random_uniform(9) + 1
         let cValue = arc4random_uniform(9) + 1
-        var newEquation = "y = " + String(aValue) + "x2 + " + String(bValue) + "x + " + String(cValue)
-        var elements:(equ: String, a: UInt32, b: UInt32, c:UInt32 )  = (newEquation, aValue, bValue, cValue)
+        let newEquation = "y = " + String(aValue) + "x2 + " + String(bValue) + "x + " + String(cValue)
+        let elements:(equ: String, a: UInt32, b: UInt32, c:UInt32 )  = (newEquation, aValue, bValue, cValue)
         //return (newEquation, aValue, bValue, cValue)
         return elements
     }
